@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Kukar Go',
+      title: 'Flutter Exercise',
       theme: new ThemeData(
         // This is the theme of your application.
         //
@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
         // counter didn't reset back to zero; the application is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: new MyHomePage(title: 'Kukar Go'),
+      home: new MyHomePage(title: '(DR) Flutter Execise'),
     );
   }
 }
@@ -43,7 +43,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -58,77 +57,57 @@ class _MyHomePageState extends State<MyHomePage> {
           // the App.build method, and use it to set our appbar title.
           title: new Text(widget.title),
         ),
-        body: new Column(
-            children: <Widget>[
-
-              new Container(
-                  height: 130.0,
-                  margin: new EdgeInsets.only(bottom: 16.0),
-                  child: new ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: new List.generate(3, (int index) {
-                        return new Card(
-                            elevation: 1.0,
-                            child: new Container(
-                                width: 250.0,
-                                height: 130.0,
-                                child: new Image.network(
-                                    'http://www.for-example.org/img/main/forexamplelogo.png',
-                                    fit: BoxFit.cover
-                                )
-                            )
-                        );
-                      })
-                  )
+        body: new Column(children: <Widget>[
+          new Container(
+              height: 130.0,
+              margin: new EdgeInsets.only(bottom: 8.0),
+              child: new ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: <String>[
+                    'http://image.tmdb.org/t/p/w500/b6ZJZHUdMEFECvGiDpJjlfUWela.jpg',
+                    'http://image.tmdb.org/t/p/w500/yVlaVnGRwJMxB3txxwA24XurSNp.jpg',
+                    'http://image.tmdb.org/t/p/w500/mo5EJsExrQCroqPDwUwp6jeq0xS.jpg',
+                  ].map((String url) {
+                    return new Card(
+                        elevation: 1.0,
+                        child: new Container(
+                            width: 250.0,
+                            height: 130.0,
+                            child: new Image.network(url, fit: BoxFit.cover)));
+                  }).toList())),
+          new Expanded(
+              child: new GridView.count(
+                  crossAxisCount: 3,
+                  childAspectRatio: 1.0,
+                  padding: const EdgeInsets.all(4.0),
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                  children: <String>[
+                    'http://image.tmdb.org/t/p/w185/uxzzxijgPIY7slzFvMotPv8wjKA.jpg',
+                    'http://image.tmdb.org/t/p/w185/eKi8dIrr8voobbaGzDpe8w0PVbC.jpg',
+                    'http://image.tmdb.org/t/p/w185/pU1ULUq8D3iRxl1fdX2lZIzdHuI.jpg',
+                    'http://image.tmdb.org/t/p/w185/ePyN2nX9t8SOl70eRW47Q29zUFO.jpg',
+                    'http://image.tmdb.org/t/p/w185/k4FwHlMhuRR5BISY2Gm2QZHlH5Q.jpg',
+                    'http://image.tmdb.org/t/p/w185/v5HlmJK9bdeHxN2QhaFP1ivjX3U.jpg',
+                    'http://image.tmdb.org/t/p/w185/d3qcpfNwbAMCNqWDHzPQsUYiUgS.jpg',
+                    'http://image.tmdb.org/t/p/w185/fchHLsLjFvzAFSQykiMwdF1051.jpg',
+                    'http://image.tmdb.org/t/p/w185/6jsqmMgR75VYC9AM6eToMJh3RxF.jpg',
+                  ].map((String url) {
+                    return new Card(
+                        child: new Container(
+                            child: new GridTile(
+                                child: new Image.network(url,
+                                    fit: BoxFit.cover))));
+                  }).toList())),
+          new Container(
+              margin: const EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.all(8.0),
+              alignment: Alignment.center,
+              decoration: new BoxDecoration(
+                color: Colors.grey[2 * 100],
               ),
-
-              new Expanded(
-                  child: new GridView.count(
-                      crossAxisCount: 3,
-                      childAspectRatio: 1.0,
-                      padding: const EdgeInsets.all(4.0),
-                      mainAxisSpacing: 4.0,
-                      crossAxisSpacing: 4.0,
-                      children: <String>[
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                        'http://www.for-example.org/img/main/forexamplelogo.png',
-                      ].map((String url) {
-                        return new Card(
-                            child: new Container(
-                                child: new GridTile(
-                                    child: new Image.network(
-                                        url, fit: BoxFit.cover)
-                                )
-                            )
-                        );
-                      }).toList()
-                  )
-              ),
-
-              new Container(
-                  margin: const EdgeInsets.only(top: 16.0),
-                  padding: const EdgeInsets.all(8.0),
-                  alignment: Alignment.center,
-                  decoration: new BoxDecoration(
-                    color: Colors.grey[2 * 100],
-                  ),
-                  child: new Text(
-                      'Build with flutter',
-                      style: new TextStyle(
-                          fontSize: 12.0
-                      )
-                  )
-              )
-
-            ]
-        )
-    );
+              child: new Text('Build with flutter',
+                  style: new TextStyle(fontSize: 12.0)))
+        ]));
   }
 }
